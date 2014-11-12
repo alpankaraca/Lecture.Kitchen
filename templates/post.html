@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="col-xs-8 col-xs-offset-2 right-pane">
+    <h3 class="post-title">{{ lec.name }}</h3>
+
+    {% if posts==0 %}
+        henüz post eklenmemiş
+    {% else %}
+
+    <ul class="list-posts list-unstyled">
+        {% for post in posts %}
+        <li>
+            <div class="li-header">
+                {{ loop.index }}
+            </div>
+            <div class="li-content">
+               {{ post.content }}
+            </div>
+            <div class="li-footer">
+                <div class="pull-left"><a href="#">paylaş</a></div>
+                <div class="pull-right">08.11.2014 23:18  -  </div>
+    <div class="clearfix"></div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% endif %}
+
+    <div class="clearfix"></div>
+    <br/><br/><br/>
+
+    <form action="?addPost=1" method="post">
+        <div class="form-group">
+            <label for="cevapla-text">Yorum yaz</label>
+            <textarea name="post" id="cevapla-text" class="form-control" rows="3"></textarea>
+        </div>
+        <input type="hidden" name="lec_id" value="{{ lec.id }}" />
+        <button type="submit" class="btn btn-default gonder pull-right">Gönder</button>
+        <div class="clearfix"></div>
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+body {
+    background: #eee;
+}
+.header {
+    padding: 10px 0 25px;
+    background: #333;
+    color: #f0f0f0;
+    position: fixed;
+    z-index: 9999;
+}
+.left-pane {
+    overflow: scroll;
+    overflow-x: hidden;
+    position: fixed;
+    margin-top: 77px;
+}
+.right-pane {
+    margin-top: 77px;
+    padding-bottom: 20px;
+}
+.ders-list {
+    margin-left: 10px;
+}
+
+.ders-list li {
+    padding: 4px 0;
+    border-bottom: 1px solid #cacaca;
+}
+.ders-list li a {
+    padding-left: 10px;
+}
+.post-title {
+    color: #aa002b;
+}
+.list-posts .li-header {
+    border-bottom: 1px solid #333;
+    padding-bottom: 3px;
+}
+.list-posts .li-footer {
+    margin-top: 5px;
+    color: #aaa;
+    margin-bottom: 40px;
+}
+
+.ui-widget-content {
+    z-index: 99999!important;
+}
