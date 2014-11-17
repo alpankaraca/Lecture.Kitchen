@@ -5,13 +5,11 @@ $(document).ready(function() {
     $(".left-pane").css("height", l_pane_h);
 
     $("#search").on("keyup", function() {
-        console.log($("#search").val())
-        $.getJSON("/search?text=" + $("#search").val(), function(data) {
-            console.log(data);
-            var datam = ["asd", "das", "dsds"]
+
             $('#search').autocomplete({
-              minLength: 0,
-              source: data,
+              minLength: 1,
+                dataType: 'json',
+              source: "/search?text=" + $("#search").val(),
               focus: function( event, ui ) {
                 $( "#search" ).val( ui.item.name );
                 return false;
@@ -22,19 +20,54 @@ $(document).ready(function() {
               }
             })
             .autocomplete( "instance" )._renderItem = function( ul, item ) {
-                console.log(ul);
-                console.log(item.name);
               return $( "<li>" )
-                .append( "<a>" + item.name + "</a>" )
+                .append( "<a href='/lecture/" + item.slug + "'>" + item.name + "<br />" + item.lecturer + "</a>" )
                 .appendTo( ul );
             };
-            //$(".lec-list-container").show();
-        });
+
+    });
+
+$('.dropdown-toggle').dropdown()
+
+    $(".translate").on("click", function () {
+        var id = $(this).attr("data-id");
+        var url = $(this).attr("data-href");
+        var loading = $("#loading-"+id);
+        loading.removeClass("hidden");
+        console.log(url);
+        $.getJSON(url+"&id="+id, function(data) {
+            console.log(data.text[0]);
+            translate(id, data.text[0]);
+            loading.addClass("hidden");
+        })
 
     });
 
 
 
-
 });
+
+var translate = function(id, text) {
+    var post = $("#post-"+id);
+    console.log(id);
+    console.log(text);
+    console.log(post);
+    post.find(".post-content").addClass("text-muted");
+    post.find(".post-content-translated").html(text);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

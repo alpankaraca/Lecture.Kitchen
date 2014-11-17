@@ -1,3 +1,4 @@
+from datetime import datetime
 from model.Post import Post
 
 __author__ = 'alpan'
@@ -10,7 +11,12 @@ class Lecture(document.Document):
     lecturer = fields.StringField()
     program = fields.StringField()
     posts = fields.ListField(fields.ReferenceField(Post))
+    last_updated = fields.DateTimeField()
 
+    def save(self, *args, **kwargs):
+        self.last_updated = datetime.now()
+
+        return super(Lecture, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.name

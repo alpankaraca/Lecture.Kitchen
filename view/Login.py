@@ -3,7 +3,7 @@ __author__ = 'cankemik'
 from flask.views import View
 from Libs.UserLib import *
 from flask import Flask,flash, redirect, render_template, \
-     request, url_for
+     request, url_for, Blueprint
 from flask import Flask, redirect, url_for, session, request
 from flask_oauth import OAuth
 FACEBOOK_APP_ID = '254292284695105'
@@ -18,5 +18,4 @@ facebook = oauth.remote_app('facebook',
     consumer_secret=FACEBOOK_APP_SECRET,
     request_token_params={'scope': 'email'}
 )
-
 

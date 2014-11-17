@@ -9,6 +9,7 @@ __author__ = 'cankemik'
 from mongoengine import document, fields
 
 class User(document.Document):
+    username = fields.StringField()
     name = fields.StringField()
     email = fields.EmailField()
     password = fields.StringField()
@@ -61,6 +62,7 @@ def login(email, password):
     u=User()
     logindata = u.login(email, password)
     if logindata:
-        session["suphi_username"] = logindata.to_json()
+        session["lk_username"] = logindata.to_json()
+        return True
     else:
         return False
