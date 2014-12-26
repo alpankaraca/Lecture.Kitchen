@@ -11,7 +11,7 @@ from mongoengine import document, fields
 class User(document.Document):
     username = fields.StringField()
     name = fields.StringField()
-    email = fields.EmailField()
+    email = fields.StringField()
     password = fields.StringField()
     address = fields.StringField()
     city = fields.StringField()

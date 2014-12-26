@@ -18,7 +18,6 @@ def registerz():
         u = User()
         u.username = request.form.get('username')
         u.email = request.form.get('email')
-        u.name = request.form.get('name')
         u.password = hashlib.md5(request.form.get('password')).hexdigest()
         u.save()
         print "dasdasd"
