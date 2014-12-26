@@ -10,6 +10,7 @@ from libs.UserLib import is_user
 
 def render(*args, **kwargs):
     user = False
+    print is_user()
     if is_user():
         user_id = json.loads(session.get("lk_username")).get("_id")["$oid"]
         user = User.objects.get(id=user_id)

@@ -13,10 +13,6 @@ Welcome = Blueprint('Welcome', __name__, template_folder="template_folder", url_
 @Welcome.route('/', methods=["GET", "POST"])
 def welcome():
 
-    posts = Post.objects.all()
-    for p in posts:
-        p.user = is_user()
-        p.save()
     return render("welcome.html", isUser=True)
 
 @Welcome.route('/addPost', methods=["GET", "POST"])
@@ -45,7 +41,6 @@ def lecture(slg):
         p.content = text
         print u == is_user()
         p.user = u
-        p.save()
         lec.posts.append(p)
         lec.save()
         posts = lec.posts

@@ -23,7 +23,7 @@ def registerz():
         print "dasdasd"
         durum = login(u.email, u.password)
         if durum:
-            return render("welcome.html", user=u)
+            return render("welcome.html")
         else:
             return render("welcome.html", error=11)
     return render("welcome.html")
