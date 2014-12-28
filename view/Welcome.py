@@ -1,3 +1,5 @@
+import re
+from django.template.defaultfilters import slugify
 from flask import render_template, Blueprint, request, redirect, jsonify
 from flask.views import View
 from mongoengine import Q
@@ -42,6 +44,7 @@ def lecture(slg):
         p.content = text
         print u == is_user()
         p.user = u
+        p.save()
         lec.posts.append(p)
         lec.save()
         posts = lec.posts
@@ -63,7 +66,26 @@ def search():
         return lectures.to_json()
 
     text = request.form.get("lecture")
-    #lec = Lecture.objects.get(name=text)
+    match = re.match(r"([a-z]+)([0-9]+)", text, re.I)
+    if match:
+        items = match.groups()
+        print items
+        text = items[0] + " " + items[1]
+
+    lec = False
+    try:
+        lec = Lecture.objects.get(code=text)
+    except:
+        try:
+            lec = Lecture.objects.get(slug=slugify(text))
+        except:
+            print "couldn't find"
+    if lec:
+        return redirect("/lecture/"+lec.slug)
+    else:
+        lectures = Lecture.objects(Q(code__icontains=text) | Q(name__icontains=text)).all().order_by("last-updated")
+        return render("list.html", lectures=lectures)
+
     #if len(lec.posts) == 0:
     #    return render("/"+lec.slug, posts=0, isUser=True)
     #else:

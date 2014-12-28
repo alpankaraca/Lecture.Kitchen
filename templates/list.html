@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="col-xs-8 col-xs-offset-2 right-pane">
+        <h3 class="post-title">Lecture Kitchen</h3>
+
+        <ul class="list-unstyled">
+            {% for l in lectures %}
+                <li><a href="/lecture/{{ l.slug }}">{{ l.code }} - {{ l.name }}</a></li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+{% endblock %}
