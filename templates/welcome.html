@@ -1,41 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="col-xs-8 col-xs-offset-2 right-pane">
-    <h3 class="post-title">COMP 461</h3>
+    <div class="col-xs-8 col-xs-offset-2 right-pane">
+        <h3 class="post-title">Lecture Kitchen</h3>
 
-    <ul class="list-posts list-unstyled">
-        <li>
-            <div class="li-header">
-                1
-            </div>
-            <div class="li-content">
-                8 kasım 2014 fenerbahçe çaykur rize maçı 'nın uzatma dakikalarında atılan ve rte'ye sövenlerin attığı sloganlardır.
+        <ul class="list-posts list-unstyled">
+            <li>
+                <div class="li-header">
+                    1
+                </div>
+                <div class="li-content">
+                    Bu site İstanbul Bilgi Üniversitesinin derslerini içermektedir. Burada istediğiniz ders hakkında
+                    istediğiniz kadar özgürce konuşma hakkına sahipsiniz. Dersin hocasını mı beğenmedin ya da ödevlerini
+                    mi, yaz tartış konuş elleş falan filan.
+                    <p>(bu yazı düzenlenecek)</p>
+                </div>
+                <div class="li-footer">
+                    <div class="pull-left"><a href="#">paylaş</a></div>
+                    <div class="pull-right"> - lecture.kitchen</div>
+                </div>
+            </li>
+        </ul>
 
-az önce ertem şener bu kişilerin passolig uygulaması sayesinde tespit edilip 5 yılla yargılanacağını söyledi.
-
-                <br/>
-                taraftar atmıştır. ulan ciddi ciddi bir grup şahıs, oturup ekranın başına, tek tek kim "hırsız tayyip erdoğan" demiş diye ağız okuyarak kişileri tespit edecek. yeminle sike sürülecek akıl yok.
-            </div>
-            <div class="li-footer">
-                <div class="pull-left"><a href="#">paylaş</a></div>
-                <div class="pull-right">08.11.2014 23:18  -  cankartal</div>
-            </div>
-        </li>
-    </ul>
-
-    <div class="clearfix"></div>
-    <br/><br/><br/>
-    {% if user %}{{ user }}{% endif %}
-    <form action="/addPost" method="post">
-        <div class="form-group">
-            <label for="cevapla-text">Yorum yaz</label>
-            <textarea name="post" id="cevapla-text" class="form-control" rows="3"></textarea>
-        </div>
-        <button type="submit" class="btn btn-default gonder pull-right">Gönder</button>
         <div class="clearfix"></div>
-    </form>
+        <br/><br/><br/>
 
-</div>
+        <form action="/addPost" method="post" class="hidden">
+            <div class="form-group">
+                <label for="cevapla-text">Yorum yaz</label>
+                <textarea name="post" id="cevapla-text" class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default gonder pull-right">Gönder</button>
+            <div class="clearfix"></div>
+        </form>
+
+    </div>
 
 {% endblock %}
