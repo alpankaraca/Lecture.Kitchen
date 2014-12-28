@@ -48,7 +48,7 @@ def lecture(slg):
         lec.posts.append(p)
         lec.save()
         posts = lec.posts
-        return render("post.html", lec=lec, posts=posts, isUser=True)
+        return redirect("/lecture/"+slg)
 
     if len(lec.posts) > 0:
         posts = lec.posts
