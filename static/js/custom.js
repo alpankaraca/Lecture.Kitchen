@@ -11,17 +11,17 @@ $(document).ready(function() {
                 dataType: 'json',
               source: "/search?text=" + $("#search").val(),
               focus: function( event, ui ) {
-                $( "#search" ).val( ui.item.name );
+                //$( "#search" ).val( ui.item.code );
                 return false;
               },
               select: function( event, ui ) {
-                $( "#search" ).val( ui.item.name );
+                $( "#search" ).val( ui.item.code );
                 return false;
               }
             })
             .autocomplete( "instance" )._renderItem = function( ul, item ) {
               return $( "<li>" )
-                .append( "<a href='/lecture/" + item.slug + "'>" + item.name + "<br />" + item.lecturer + "</a>" )
+                .append( "<a href='/lecture/" + item.slug + "'>" + item.code + "<br /><span class='search-list-name'>" + item.name + "</span></a>" )
                 .appendTo( ul );
             };
 

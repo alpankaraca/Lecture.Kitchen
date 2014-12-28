@@ -2,10 +2,10 @@ import datetime
 from model.UserModel import User
 
 __author__ = 'alpan'
-from mongoengine import document, fields, EmbeddedDocument
+from mongoengine import document, fields
 
 
-class Post(EmbeddedDocument):
+class Post(document.Document):
     user = fields.ReferenceField(User)
     username = fields.StringField()
     _created_date = fields.DateTimeField(default=datetime.datetime.now())

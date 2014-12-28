@@ -1,5 +1,6 @@
 from flask import render_template, Blueprint, request, redirect, jsonify
 from flask.views import View
+from mongoengine import Q
 from libs.Render import render
 from libs.UserLib import is_user
 from model.Lecture import Lecture
@@ -58,7 +59,7 @@ def search():
     import json
     if request.args.get("text"):
         name = request.args.get("text")
-        lectures = Lecture.objects(name__istartswith=name).all()
+        lectures = Lecture.objects(Q(code__istartswith=name) | Q(name__istartswith=name)).all()
         return lectures.to_json()
 
     text = request.form.get("lecture")

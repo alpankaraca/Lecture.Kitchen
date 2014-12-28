@@ -4,7 +4,7 @@ from flask.ext.admin import Admin
 from flask.ext.admin.contrib.mongoengine import ModelView
 from mongoengine import connect
 from model.UserModel import User
-from model.Lecture import Lecture
+from model.Lecture import Lecture, Section
 from model.Post import Post
 from view.Register import register
 from view.Welcome import Welcome
@@ -20,6 +20,7 @@ adminn = Admin(app)
 adminn.add_view(ModelView(Lecture, "Lecture"))
 adminn.add_view(ModelView(Post, "Post"))
 adminn.add_view(ModelView(User, "User"))
+adminn.add_view(ModelView(Section, "Sections"))
 
 @app.route('/')
 def hello_world():
