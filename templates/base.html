@@ -96,15 +96,28 @@
 
 <!-- MODALDS END -->
 
-<div class="header col-lg-12">
-    <div class="">
-        <div class="col-xs-2 logo">
-            Lecture Kitchen <br/>
-            İstanbul Bilgi University
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                Lecture Kitchen <br/>
+                İstanbul Bilgi University
+            </a>
         </div>
 
-        <div class="col-xs-7 search-container">
-            <form class="form-inline" role="form" action="/search" method="post">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <form class="navbar-form navbar-left" role="form" action="/search" method="post">
                 <div class="form-group" style="overflow: hidden;">
                     <label for="search" class="sr-only">Ders Adı</label>
                     <input type="text" class="form-control" id="search" name="lecture" placeholder="Ders Adı"
@@ -119,18 +132,32 @@
                 </div>
                 <button type="submit" class="btn btn-info">Getir</button>
             </form>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ user.username }}
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Profil</a></li>
+                            <li><a href="#">Takip ettiğim dersler</a></li>
+                            <li><a href="#">Ayarlar</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/register/logout">Çıkış</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a class="btn btn-link login-button" data-toggle="modal" data-target="#login">Giriş Yap</a></li>
+                    <li><a class="btn btn-link register-button" data-toggle="modal" data-target="#register">Üye Ol</a>
+                    </li>
+                {% endif %}
+
+            </ul>
         </div>
-        <div class="col-xs-3 login-container">
-            {% if user %}
-                <a href="/register/logout"> {{ user.username }}</a>
-            {% else %}
-                <a class="btn btn-link login-button" data-toggle="modal" data-target="#login">Giriş Yap</a>
-                <a class="btn btn-link register-button" data-toggle="modal" data-target="#register">Üye Ol</a>
-            {% endif %}
-        </div>
-        <div class="clearfix"></div>
+        <!-- /.navbar-collapse -->
     </div>
-</div>
+    <!-- /.container-fluid -->
+<div class="clearfix"></div>
+</nav>
 
 <div class="col-xs-2 left-pane">
 

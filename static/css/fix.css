@@ -181,14 +181,19 @@ background-color:#FFFFFF}
     position: fixed;
     z-index: 9999;
 }
+.navbar-default {
+    background-color: #333;
+    border-color: #666;
+    border-radius: 0;
+}
 .left-pane {
     overflow: scroll;
     overflow-x: hidden;
     position: fixed;
-    margin-top: 77px;
+    margin-top: -18px;
 }
 .right-pane {
-    margin-top: 77px;
+    margin-top: -18px;
     padding-bottom: 20px;
 }
 .ders-list {
@@ -232,4 +237,19 @@ border-left: none;
 .search-list-name{
     color: #999;
     font-size: 11px;
+}
+
+.navbar-default .navbar-brand {
+    color: #fafafa;
+    padding: 6px 16px 15px 16px;
+}
+.navbar-default .navbar-brand:hover {
+    color: #aaa;
+}
+.navbar-default .navbar-nav>li>a {
+color: #fafafa;
+}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+color: #aaa;
+background-color: transparent;
 }

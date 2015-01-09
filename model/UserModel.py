@@ -20,6 +20,7 @@ class User(document.Document):
     fb_token = fields.StringField()
     last_visit = fields.StringField()
     fb_link = fields.StringField()
+    verified_mail = fields.BooleanField(default=False)
 
     def log(self, action, data={}):
         l = UserLog()

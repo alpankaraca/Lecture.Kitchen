@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Mail Verify</title>
+</head>
+<body>
+<p>Lecture.Kitchen'a hoş geldiniz.</p>
+
+<p>Kullanıcı Adı: {{ data.username }} </p>
+<br />
+Üyeliğinizi aktif hale getirmek için <a href="http://www.lecture.kitchen/verify/{{ data.id }}">buraya</a> tıklayınız.
+<br />
+<br />
+Linke tıklayamıyorsanız aşağıdaki adresi kopyalayıp tarayıcınızın adres çubuğuna yapıştırınız.
+<br/>
+<a>http://www.lecture.kitchen/verify/{{ data.id }}</a>
+<br/>
+<br/><br/>
+<p>Eğer bu üyelikle ilginiz yoksa lütfen buraya tıklayınız.</p>
+<br/>
+<p>*Bu yalnızca gönderim amaçlı bir e-posta adresidir. Bu iletiyi yanıtladığınızda, yanıtınız izlenmez veya cevaplanmaz.</p>
+
+</body>
+</html>

@@ -34,8 +34,8 @@ soup = BeautifulSoup(html)
 
 lectures = []
 
-Lecture.objects.all().delete()
-Section.objects.all().delete()
+#Lecture.objects.all().delete()
+#Section.objects.all().delete()
 
 
 text = html
@@ -71,7 +71,7 @@ for h in text.split('<tr class="TR'):
             #lecture.update({"name": name})
         except:
             print "except-name"
-        l.save()
+        #l.save()
         for ss in i.split('0">'):
             row = ss.split('</TR>')[0]
             #print row
@@ -85,7 +85,7 @@ for h in text.split('<tr class="TR'):
                 print scode, slecturer, sschedule
 
                 s = Section(code=scode, lecturer=slecturer, schedule=sschedule)
-                s.save()
+                #s.save()
 
                 #tmp_text = row.split('&nbsp;&nbsp;')[1].split("</TD>")[0].split(".")[0]#.split("\n")[0]
                 #tmp_text += " - " + row.split('&nbsp;&nbsp;')[2].split("</TD>")[0]#.split("\n")[0]
@@ -95,7 +95,7 @@ for h in text.split('<tr class="TR'):
 
             if s:
                 l.sections.append(s)
-                l.save()
+                #l.save()
 
         try:
             #lectures.append(lecture)

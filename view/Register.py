@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 import hashlib
+from libs.FlaskMail import Fmail
 
 __author__ = 'cankemik'
 from flask.views import View
@@ -14,20 +16,34 @@ register = Blueprint('register', __name__, template_folder="template_folder", ur
 @register.route('/regs', methods=["POST"])
 def registerz():
     if request.method == "POST":
-        print "at"
+
         u = User()
         u.username = request.form.get('username')
         u.email = request.form.get('email')
         u.password = hashlib.md5(request.form.get('password')).hexdigest()
         u.save()
-        print "dasdasd"
-        durum = login(u.email, u.password)
-        if durum:
-            return render("welcome.html" )
-        else:
-            return render("welcome.html", error=11)
-    return render("welcome.html")
 
+
+        mail_data = {}
+        mail_data["username"] = u.username
+        mail_data["email"] = u.email + "@bilgiedu.net"
+        mail_data["id"] = u.id
+
+        Fmail({"title": "Lecture.Kitchen üyelik onay", "text": render_template("mail_verify_html.html", data=mail_data),
+               "from_mail": u.email+"@bilgiedu.net"})
+
+
+        print "at"
+
+        return render("uyelik-onay.html", u=u)
+
+
+        #durum = login(u.email, u.password)
+        #if durum:
+        #    return render("welcome.html" )
+        #else:
+        #    return render("welcome.html", error=11)
+    return render("welcome.html")
 
 
 @register.route('/login', methods=["POST"])
@@ -49,10 +65,21 @@ def loginz():
     return render("welcome.html")
 
 
-
 @register.route('/logout', methods=["GET"])
 def logoutz():
     session.pop('lk_username', None)
     return redirect("/")
+
+
+@register.route('/verify/<ids>', methods=['GET'])
+def verify(ids):
+    try:
+
+        w = User.objects.get(id=ids)
+        w.verified_mail = True
+        w.save()
+        return redirect(url_for("/", success="ok"))
+    except:
+        return redirect("/?error=99")
 
 
