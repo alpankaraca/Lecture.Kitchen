@@ -85,7 +85,9 @@
 
     <script>
     $(document).ready(function() {
-      $(".share").hideshare();
+      $(".share").hideshare({
+        decription: $(this).find(".post-content").html()     // Description for Facebook summary
+      });
     });
     </script>
 
