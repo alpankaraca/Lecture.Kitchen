@@ -74,12 +74,26 @@ def logoutz():
 @register.route('/verify/<ids>', methods=['GET'])
 def verify(ids):
     try:
-
         w = User.objects.get(id=ids)
+    except:
+        print "user verify edilmedi"
+        return redirect("/?error=99")
+
+    if w:
         w.verified_mail = True
         w.save()
-        return redirect(url_for("/", success="ok"))
-    except:
-        return redirect("/?error=99")
+        durum = login(w.email, w.password)
+        print durum, "6666"
+        if durum:
+            print w.username, "----", request.path
+            return redirect("/")
+        print "verified user ", w.username
+        return redirect("/register/verified")
+
+
+@register.route('/verified', methods=['GET'])
+def verified():
+
+    return render("verified.html")
 
 

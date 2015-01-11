@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="col-xs-8 col-xs-offset-2 right-pane">
+        <h3 class="post-title">Lecture Kitchen</h3>
+
+        <ul class="list-posts list-unstyled">
+            <li>
+                <div class="li-header">
+                    1
+                </div>
+                <div class="li-content">
+                    Sayın {{ u.username }}
+                    Üyeliğin aktifleştirilmiştir yukarıdaki giriş butonundan kullanıcı girişi yapabilirsin.
+                    <p>(bu yazı düzenlenecek)</p>
+                </div>
+                <div class="li-footer">
+                    <div class="pull-right"> - lecture.kitchen</div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="clearfix"></div>
+
+    </div>
+
+{% endblock %}
