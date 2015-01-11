@@ -20,7 +20,7 @@
             </div>
             <div class="li-footer">
                 <div class="pull-left">
-                    <a href="#">paylaş</a> -
+                    <a href="#" class="share">paylaş</a> -
                 </div>
                 <div class="dropdown pull-left">
                   <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
@@ -78,5 +78,15 @@
     </form>
 {% endif %}
 </div>
+
+{% endblock %}
+
+{% block js %}
+
+    <script>
+    $(document).ready(function() {
+      $(".share").hideshare();
+    });
+    </script>
 
 {% endblock %}
