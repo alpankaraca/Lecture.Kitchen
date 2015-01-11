@@ -45,7 +45,7 @@
     defaults: {
       link: document.URL,
       title: document.title,
-      description: 'at yarraa',
+      description: document.description,
       media: null,
       facebook: true,
       twitter: true,
